@@ -25,31 +25,14 @@
 				<table class="responsive-table">
 					<thead>
 						<tr>
-							<th></th>
+							<th>Rank</th>
 							<th data-field="id">Group Name</th>
 							<th data-field="name"><img src="img/sr-dev-logo.png" class="sr-dev-logo">Number</th>
 							<th data-field="price">Votes Polled</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>1.</td>
-							<td>Ninja</td>
-							<td>+917204540860</td>
-							<td>52 (65%)</td>
-						</tr>
-						<tr>
-							<td>2.</td>
-							<td>Knowty</td>
-							<td>+917032152940</td>
-							<td>19 (24%)</td>
-						</tr>
-						<tr>
-							<td>3.</td>
-							<td>Hackers</td>
-							<td>+919866086554</td>
-							<td>8 (10%)</td>
-						</tr>
+					<tbody id='results'>
+						<tr><td>Loading...</td></tr>
 					</tbody>
 				</table>
 			</div>
@@ -91,7 +74,7 @@
 			<div class="row">
 				<div class="m5">
 					<div class="card-panel teal card TV">
-						<span class="white-text percentage-text">39.0%
+						<span class="white-text percentage-text" id='vote_total'>Loading ...
           </span>
 					</div>
 				</div>
@@ -104,7 +87,7 @@
 			<div class="row">
 				<div class="m5">
 					<div class="card-panel teal card VE">
-						<span class="white-text percentage-text">39.4%
+						<span class="white-text percentage-text" id='vote_engagement'>Loading ...
           </span>
 					</div>
 				</div>
@@ -117,7 +100,7 @@
 			<div class="row">
 				<div class="m5">
 					<div class="card-panel teal card VotesPolled">
-						<span class="white-text percentage-text">Up 38%
+						<span class="white-text percentage-text" id='vote_last_hour'>N/A
           </span>
 					</div>
 				</div>
