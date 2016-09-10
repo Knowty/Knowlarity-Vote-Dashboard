@@ -38,17 +38,17 @@
 			</div>
 			<div class="row bottom-cols">
 				<div class="col s3"><span class="center-text bottom-cols-headers">Poll Start Date</span>
-					<div class="row bottom-rows">
+					<div class="row bottom-rows" id='poll_start_time'>
 						10 Sep 2016
 					</div>
 				</div>
 				<div class="col s3"><span class="center-text bottom-cols-headers">Poll End Date</span>
-					<div class="row bottom-rows">
+					<div class="row bottom-rows" id='poll_end_time'>
 						11 Sep 2016
 					</div>
 				</div>
 				<div class="col s3"> <span class="center-text bottom-cols-headers">Last Updated</span>
-					<div class="row bottom-rows">
+					<div class="row bottom-rows" id='last_updated'>
 						11 Sep 2016
 					</div>
 				</div>
@@ -74,7 +74,7 @@
 			<div class="row">
 				<div class="m5">
 					<div class="card-panel teal card TV">
-						<span class="white-text percentage-text" id='vote_total'>Loading ...
+						<span class="white-text percentage-text" id='vote_total'>N/A
           </span>
 					</div>
 				</div>
@@ -87,7 +87,7 @@
 			<div class="row">
 				<div class="m5">
 					<div class="card-panel teal card VE">
-						<span class="white-text percentage-text" id='vote_engagement'>Loading ...
+						<span class="white-text percentage-text" id='vote_engagement'>N/A
           </span>
 					</div>
 				</div>
@@ -95,7 +95,7 @@
 		</div>
 		<div class="col s4">
 			<div class="row statement">
-				<p>Votes polled in last 1 hour</p>
+				<p>Votes polled in last 1 hr</p>
 			</div>
 			<div class="row">
 				<div class="m5">
@@ -119,3 +119,4 @@
 </body>
 
 </html>
+

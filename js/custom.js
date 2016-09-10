@@ -1,45 +1,55 @@
-var options = {tooltipTemplate:
-	" <%=label%>: <%= numeral(value).format('($00[.]00)') %> - <%= numeral(circumference / 6.283).format('(0[.][00]%)') %>"
-   }
-var data = {
-    labels: [
-        "Ninja",
-        "Knowty",
-        "Hackers"
-    ],
-		legends: {
-			labels: function(chart){
-				debugger
-			}
-		},
-    datasets: [
-        {
-            data: [52, 19, 8],
-            backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56"
-            ],
-            hoverBackgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56"
-            ]
-        }]
+var randomColorGenerator = function () { 
+    return '#' + (Math.random().toString(16) + '0000000').slice(2, 8); 
 };
 
+function renderPieChart(labels, dataentries) {
+    var options = {tooltipTemplate:
+    " <%=label%>: <%= numeral(value).format('($00[.]00)') %> - <%= numeral(circumference / 6.283).format('(0[.][00]%)') %>"
+   }
+    var data = {
+        labels: labels,
+        legends: {
+            labels: function(chart){
+                debugger
+        }
+        },
+        datasets: [
+            {
+                data: dataentries,
+                backgroundColor: backgroundColors,
+                hoverBackgroundColor: backgroundColors 
+            }]
+    };
 
-ctx = $("#myChart")
-var myDoughnutChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: data,
-		animation:{
-        animateScale:true
-    }
-});
 
-var leading_team = $("tr td:nth-child(2)").first().text()
-$(".leading-team p").text(leading_team)
+    ctx = $("#myChart")
+    var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+            animation:{
+            animateScale:true
+        }
+    });
+
+    var leading_team = $("tr td:nth-child(2)").first().text()
+    $(".leading-team p").text(leading_team)
+
+
+}
+
+backgroundColors = [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                '#ee6e73',
+                '#4caf50',
+                '#ded937',
+                '#26a69a',
+                '#a62696',
+                '#b1f8fb',
+                '#58163e',
+                '#864603'
+            ],
 
 
 /* 
@@ -56,10 +66,16 @@ function listener(event) {
     data = JSON.parse(event.data)
     console.log(data);
 
+    teams = []
+    vote_percentage = []
+
     // If there are leaders.
     if (data.leaderboard.length) {
         $('#results').html('');
         $.each(data.leaderboard, function(index, row) {
+            teams.push(row.team);
+            vote_percentage.push((row.votes / data.participation_count) * 100);
+
             $('#results').append(`
                 <tr>
                     <td>${index + 1}.</td>
@@ -72,12 +88,22 @@ function listener(event) {
 
         total_vote_percentage = (data.participation_count / data.participant_count) * 100;
         $('#vote_total').text(`${data.participation_count}`);  
-        $('#vote_engagement').text(`${total_vote_percentage}%`)
+        $('#vote_engagement').text(`${total_vote_percentage.toFixed(2)}%`)
+
+        $('#poll_start_time').text(`${data.poll_start_time}`);
+        $('#poll_end_time').text(`${data.poll_end_time}`);
+        $('#last_updated').text(`${data.last_updated}`);
+
+        renderPieChart(teams, vote_percentage);
     }
     
     
 }
 
 connectToStream();
+renderPieChart([], []);
+
 eventSource.addEventListener('message', listener);
 eventSource.addEventListener('error', connectToStream);
+
+
