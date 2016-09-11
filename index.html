@@ -1,110 +1,89 @@
+<!DOCTYPE html>
 <html>
-
 <head>
-	<link rel="stylesheet" href="css/materialize.min.css">
-	<link rel="stylesheet" href="css/style.css">
+	<title>Sequoia Hack | Popular hack | Powered by Knowlarity</title>
+	<link rel="stylesheet" href="css/website.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-
 <body>
-	<div class="white-container">
-		<div class="inner-content">
-			<div class="card-image">
-				<img src="img/Navbar.jpg" class="nav-image">
-			</div>
-			<hr class="hzr"></hr>
-			<div class="row">
-				<div class="center-text"> <span class="orange-text"> POWERED BY</span>DEVELOPER.KNOWLARITY.COM</div>
-			</div>
-			<div class="row">
-				<img src="img/sr-api-logo.png" class="nav-sr-api-logo">
-			</div>
-			<div class="row leaderboard-text">
-				<p class="leaderboard-table-header">Leader Board</p>
-			</div>
-			<div class="row leaderboard">
-				<table class="responsive-table">
-					<thead>
-						<tr>
-							<th>Rank</th>
-							<th data-field="id">Group Name</th>
-							<th data-field="name"><img src="img/sr-dev-logo.png" class="sr-dev-logo">Number</th>
-							<th data-field="price">Votes Polled</th>
-						</tr>
-					</thead>
-					<tbody id='results'>
-						<tr><td>Loading...</td></tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="row bottom-cols">
-				<div class="col s3"><span class="center-text bottom-cols-headers">Poll Start Date</span>
-					<div class="row bottom-rows" id='poll_start_time'>
-						10 Sep 2016
-					</div>
-				</div>
-				<div class="col s3"><span class="center-text bottom-cols-headers">Poll End Date</span>
-					<div class="row bottom-rows" id='poll_end_time'>
-						11 Sep 2016
-					</div>
-				</div>
-				<div class="col s3"> <span class="center-text bottom-cols-headers">Last Updated</span>
-					<div class="row bottom-rows" id='last_updated'>
-						11 Sep 2016
-					</div>
-				</div>
-				<div class="col s3"><span class="center-text bottom-cols-headers">Status</span>
-					<div class="row">
-						<div class="chip status-badge">
-							<i class="mdi-action-done left"></i>Open</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="container">
+		<div class='row'>
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12"></div>
+					<img src="img/Navbar.jpg" class="nav-image">
 
-	<div class="pie-chart">
-		<canvas id="myChart" width="400" height="400"></canvas>
-	</div>
-	<div class="analytics">
-		<div class="row">
-			<div class="col s4" style="    margin-left: 15%;">
-			<div class="row statement">
-				<p>Total votes polled</p>
-			</div>
-			<div class="row">
-				<div class="m5">
-					<div class="card-panel teal card TV">
-						<span class="white-text percentage-text" id='vote_total'>N/A
-          </span>
+					<div class="col-md-12">
+							<div class="center-text"> <span class="orange-text"> POWERED BY</span>  DEVELOPER.KNOWLARITY.COM
+							</div>
 					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col s4" style='margin-left: 15%;'>
-			<div class="row statement">
-				<p>Voting Engagement</p>
-			</div>
-			<div class="row">
-				<div class="m5">
-					<div class="card-panel teal card VE">
-						<span class="white-text percentage-text" id='vote_engagement'>N/A
-          </span>
+					<div class="col-md-6 col-md-offset-3">
+							<img src="img/sr-api-logo.png" class="nav-sr-api-logo">
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+					<div class="col-md-12">
+						<table class="table table-striped" id='time'>
+							<thead>
+								<tr>
+									<th>Poll Start Time</th>
+									<th data-field="id">Poll End Time</th>
+									<th data-field="price">Last Updated</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr><td id='poll_start_time'>Loading...</td>
+								<td id='poll_end_time'>Loading...</td>
+								<td id='last_updated'>Loading...</td></tr>
+							</tbody>
+							</table>
+					</div>
+					<div class="col-md-4">
+						<span class="title">Total Votes Polled</span>
+						<div class="number" id='vote_total'></div>
+					</div>
+					<div class="col-md-4">
+						<span class="title">Voting Engagement</span>
+						<div class="number" id='vote_engagement'></div>
 
-	<div class="leading-team">
-		<p><i>#Team 1</i></p>
+					</div>
+					<div class="col-md-4">
+						<span class="title">Votes in the last hour</span>	
+						<div class="number" id=''></div>
+
+					</div>
+				</div>	
+			</div>
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="pie-chart">
+							<canvas id="myChart"></canvas>
+						</div>
+					</div>
+					<div class="col-md-12" id="leaderboard_text">LEADERBOARD</div>
+					<div class="col-md-12">
+						  <table class="table table-striped" id='leaderboard'>
+							<thead>
+								<tr>
+									<th>Rank</th>
+									<th data-field="id">Group Name</th>
+									<th data-field="name"><img src="img/sr-dev-logo.png" width="30" height="30" class="sr-dev-logo">Number</th>
+									<th data-field="price">#Votes</th>
+								</tr>
+							</thead>
+							<tbody id='results'>
+								<tr><td>Loading...</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.min.js"></script>
 	<script src="js/materialize.min.js"></script>
 	<script src="js/chart.min.js"></script>
 	<script src="js/custom.js"></script>
 </body>
-
 </html>
-

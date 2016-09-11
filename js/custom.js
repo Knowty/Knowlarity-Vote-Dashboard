@@ -41,14 +41,14 @@ backgroundColors = [
                 "#FF6384",
                 "#36A2EB",
                 "#FFCE56",
-                '#ee6e73',
                 '#4caf50',
                 '#ded937',
                 '#26a69a',
                 '#a62696',
                 '#b1f8fb',
                 '#58163e',
-                '#864603'
+                '#864603',
+                '#ee6e73',
             ],
 
 
@@ -87,7 +87,7 @@ function listener(event) {
         });  
 
         total_vote_percentage = (data.participation_count / data.participant_count) * 100;
-        $('#vote_total').text(`${data.participation_count}`);  
+        $('#vote_total').text(`${data.participation_count} / ${data.participant_count}`);  
         $('#vote_engagement').text(`${total_vote_percentage.toFixed(2)}%`)
 
         $('#poll_start_time').text(`${data.poll_start_time}`);
