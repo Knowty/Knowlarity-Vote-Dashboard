@@ -87,8 +87,8 @@ function listener(event) {
         });  
     }
     total_vote_percentage = (data.participation_count / data.participant_count) * 100;
-    $('#vote_total').text(`${data.participation_count} / ${data.participant_count}`);  
-    $('#vote_engagement').text(`${total_vote_percentage.toFixed(2)}%`)
+    $('#vote_total').text(`${data.participant_count}`);  
+    $('#vote_engagement').text(`${data.participant_count}`)
     $('#vote_last_hour').text(`${data.participation_count_last_hour}`);
 
     $('#poll_start_time').text(`${data.poll_start_time}`);
